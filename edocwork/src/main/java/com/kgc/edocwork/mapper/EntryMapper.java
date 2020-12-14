@@ -1,7 +1,7 @@
 package com.kgc.edocwork.mapper;
 
-import com.kgc.edoc.pojo.Entry;
-import com.kgc.edoc.pojo.EntryExample;
+import com.kgc.edocwork.pojo.Entry;
+import com.kgc.edocwork.pojo.EntryExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
