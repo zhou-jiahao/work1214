@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <div>
+        <a href="javascript:history.back(-1)">返回</a>
+    </div>
+    <div>
+        <form th:action="@{/doadd}">
+            <h3>增加电子文档</h3>
+            <p><span style="font-weight: bolder">文档名称:</span><input type="text" name="title"><span
+                    style="color:red;">*</span></p>
+            <p><span style="font-weight: bolder">文档摘要:</span><input type="text" name="summary">
+            <p><span style="font-weight: bolder">上传人:</span><input type="text" name="uploaduser">
+            <p><span style="font-weight: bolder">上传时间:</span><input type="text" name="createdate"><span
+                    style="color:red;">yyyy-MM-dd</span></p>
+            <p><input type="submit" value="提交">&nbsp;<input type="reset"></p>
+        </form>
+    </div>
+</center>
+</body>
+</html>

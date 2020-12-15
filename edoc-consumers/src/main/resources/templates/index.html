@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/" method="post">
+    <select name="type">
+        <option value="4">全部</option>
+        <option value="1" >java工程师</option>
+        <option value="2" >UI设计师</option>
+        <option value="3" >C语音工程师</option>
+    </select>
+    <input type="submit" value="查询"/>
+</form>
+<a th:href="@{toadd}">新增文档</a>
+<div>
+    <table border="1px">
+        <tr>
+            <td>文档编号</td>
+            <td>文档名称</td>
+            <td>文档摘要</td>
+            <td>上传人</td>
+            <td>上传时间</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="b:${entrylist}">
+            <td th:text="${b.id}"></td>
+            <td th:text="${b.title}"></td>
+            <td th:text="${b.summary}"></td>
+            <td th:text="${b.uploaduser}"></td>
+            <td  th:text="${#dates.format(b.createdate,'yyyy-MM-dd')}"></td>
+            <td>
+                <a th:href="@{toupd(id=${b.id})}">修改</a>
+                <a th:href="@{date(id=${b.id})}">删除</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<p th:text="${session.msg}"></p>
+</body>
+</html>
