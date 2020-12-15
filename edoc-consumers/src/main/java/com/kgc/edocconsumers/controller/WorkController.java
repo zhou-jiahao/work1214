@@ -6,6 +6,7 @@ import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -17,7 +18,7 @@ public class WorkController {
     WorkService workService;
 
     @RequestMapping("/")
-    public String index(Integer type, Model model){
+    public String index(@RequestParam(value = "type",required = false,defaultValue = "0") Integer type, Model model){
         List<Entry> entrylist = workService.entrylist(type);
         model.addAttribute("entrylist",entrylist);
         return "index";
@@ -31,6 +32,7 @@ public class WorkController {
 
     @RequestMapping("/doadd")
     public String doadd(Entry entry, HttpSession session){
+        entry.setCategoryid(1);
         int i=workService.addentry(entry);
         if(i>0){
             session.setAttribute("msg", "添加成功");
